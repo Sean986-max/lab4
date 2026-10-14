@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogue>
+    <book id="1">
+        <title>Harry Potter and the Philosopher's Stone</title>
+        <author>J.K. Rowling</author>
+        <price>25.50</price>
+    </book>
+    <book id="2">
+        <title>The Hobbit</title>
+        <author>J.R.R. Tolkien</author>
+        <price>19.90</price>
+    </book>
+    <book id="3">
+        <title>Charlotte's Web</title>
+        <author>E.B. White</author>
+        <price>15.00</price>
+    </book>
+    <book id="4">
+        <title>The Hunger Games</title>
+        <author>Suzanne Collins</author>
+        <price>22.30</price>
+    </book>
+</catalogue>

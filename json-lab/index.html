@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profiles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        h1 {
+            color: darkblue;
+        }
+        .user {
+            border: 1px solid gray;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 450px;
+        }
+        .user h2 {
+            font-size: 18px;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>User Profiles</h1>
+
+    <div id="list"></div>
+
+    <script>
+        // get the json file and show the users
+        fetch('userProfiles.json')
+            .then(function(response) {
+                if (!response.ok) {
+                    throw new Error('Fetch error: ' + response.status);
+                } else {
+                    return response.json();
+                }
+            })
+            .then(function(json) {
+                var out = '';
+
+                // go through each user
+                for (var i = 0; i < json.length; i++) {
+                    var u = json[i];
+                    var ad = u.address;
+                    var pr = u.preferences;
+
+                    out += '<div class="user">';
+                    out += '<h2>' + u.firstName + ' ' + u.lastName + '</h2>';
+                    out += '<p>Email: ' + u.email + '</p>';
+                    out += '<p>Date of birth: ' + u.dateOfBirth + '</p>';
+                    out += '<p>Address: ' + ad.street + ', ' + ad.city + ', ' + ad.state + ' ' + ad.zipCode + '</p>';
+                    out += '<p>Theme: ' + pr.theme + '</p>';
+                    out += '<p>Language: ' + pr.language + '</p>';
+                    out += '<p>Notifications: ' + pr.notifications + '</p>';
+                    out += '<p>Subscribed: ' + pr.subscription + '</p>';
+                    out += '</div>';
+                }
+
+                document.getElementById('list').innerHTML = out;
+            })
+            .catch(function(err) {
+                console.error('Fetch error: ' + err.message);
+            });
+    </script>
+
+</body>
+</html>
